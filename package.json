@@ -18,9 +18,24 @@
     "app"
   ],
   "author": "Bo-Yi Wu",
-  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/appleboy/slush-html5-template/blob/master/LICENSE"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/appleboy/slush-html5-template/issues"
   },
-  "homepage": "https://github.com/appleboy/slush-html5-template"
+  "homepage": "https://github.com/appleboy/slush-html5-template",
+  "dependencies": {
+    "gulp-rename": "^1.2.0",
+    "underscore.string": "^2.3.3",
+    "gulp-template": "^0.1.1",
+    "gulp-install": "^0.1.5",
+    "gulp-conflict": "^0.1.2",
+    "gulp": "^3.7.0",
+    "inquirer": "^0.5.1",
+    "gulp-util": "^2.2.16"
+  }
 }
