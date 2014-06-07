@@ -1,0 +1,26 @@
+{
+  "name": "slush-html5-template",
+  "version": "0.0.1",
+  "description": "html5 template engine with CoffeeScript, Compass, RequireJS.",
+  "main": "slushfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/appleboy/slush-html5-template.git"
+  },
+  "keywords": [
+    "slushgenerator",
+    "html5",
+    "front-end",
+    "web",
+    "app"
+  ],
+  "author": "Bo-Yi Wu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/appleboy/slush-html5-template/issues"
+  },
+  "homepage": "https://github.com/appleboy/slush-html5-template"
+}
