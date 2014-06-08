@@ -45,5 +45,5 @@ $ cd my-slush-html5-template && slush html5-template
 ### ScreenShot
 
 <p align="center">
-  <img src="images/screenshot.png" width="600" />
+  <img src="images/screenshot.png" />
 </p>
