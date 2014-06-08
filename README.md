@@ -41,3 +41,9 @@ Run the generator from within the new folder:
 ```bash
 $ cd my-slush-html5-template && slush html5-template
 ```
+
+### ScreenShot
+
+<p align="center">
+  <img src="images/screenshot.png" width="600" />
+</p>
