@@ -16,7 +16,7 @@
 
 ### Installation
 
-Install `slush-backbone` globally:
+Install `slush-html5-template` globally:
 
 ```bash
 $ npm install -g slush-html5-template
@@ -45,5 +45,5 @@ $ cd my-slush-html5-template && slush html5-template
 ### ScreenShot
 
 <p align="center">
-  <img src="images/screenshot.png" />
+  <img src="https://raw.githubusercontent.com/appleboy/slush-html5-template/master/images/screenshot.png" />
 </p>
