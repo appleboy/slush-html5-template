@@ -42,6 +42,24 @@ Run the generator from within the new folder:
 $ cd my-slush-html5-template && slush html5-template
 ```
 
+## Quick start
+
+To run the application
+
+```bash
+$ cd my-slush-html5-template && npm start
+```
+
+And then navigate to http://localhost:1337
+
+## Testing
+
+To test the application
+
+```bash
+$ cd my-slush-html5-template && npm test
+```
+
 ### ScreenShot
 
 <p align="center">
