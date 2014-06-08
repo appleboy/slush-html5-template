@@ -19,7 +19,7 @@ gulp.task('default', function (done) {
     gulp.src(__dirname + '/templates/**')
       .pipe(template(answers))
       .pipe(rename(function (file) {
-        if (file.basename[0] === '_') {
+        if (file.basename[0] === '_' && file.extname !== '.scss' ) {
           file.basename = '.' + file.basename.slice(1);
         }
       }))
