@@ -1,7 +1,7 @@
 {
   "name": "slush-html5-template",
-  "version": "0.0.1",
-  "description": "html5 template engine with CoffeeScript, Compass, RequireJS.",
+  "version": "0.0.2",
+  "description": "html5 template engine generator for Slush.",
   "main": "slushfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
