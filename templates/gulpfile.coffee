@@ -40,17 +40,16 @@ gulp.task 'test_coffee', ->
     .pipe coffeelintTasks()
     .pipe gulp.dest paths.test
 
-gulp.task 'w3cjs', ->
+gulp.task 'html', ->
   gulp.src paths.src + '/*.html'
     .pipe $.if !production, $.changed paths.dist
-    .pipe $.w3cjs()
     .pipe $.if production, $.htmlmin(
       removeComments: true
       collapseWhitespace: true
     )
     .pipe $.if production, $.replace 'js/main', 'js/' + filename
     .pipe $.if production, $.replace 'vendor/requirejs/require.js', 'js/require.js'
-    .pipe gulp.dest paths.dist
+    .pipe $.if production, gulp.dest paths.dist
     .pipe $.connect.reload()
 
 gulp.task 'compass', ->
@@ -82,15 +81,14 @@ gulp.task 'clean', ->
     read: false
   ).pipe $.clean()
 
-
 # Images
 gulp.task 'images', ->
   gulp.src paths.images + '/**/*.{jpg,jpeg,png,gif}'
-    .pipe $.changed paths.dist + '/assets/images'
-    .pipe $.cache $.imagemin
+    .pipe $.if production, $.changed paths.dist + '/assets/images'
+    .pipe $.if production, $.cache $.imagemin
       progressive: true
       interlaced: true
-    .pipe gulp.dest paths.dist + '/assets/images'
+    .pipe $.if production, gulp.dest paths.dist + '/assets/images'
     .pipe $.connect.reload()
 
 # testing via mocha tool
@@ -110,7 +108,7 @@ gulp.task 'watch', ['connect:app'], ->
   # run tasks automatically when files change
   gulp.watch paths.coffee + '/**/*.coffee', ['coffee']
   gulp.watch paths.test + '/**/*.coffee', ['test_coffee']
-  gulp.watch paths.src + '/*.html', ['w3cjs']
+  gulp.watch paths.src + '/*.html', ['html']
   gulp.watch paths.sass + '/**/*.scss', ['compass']
   gulp.watch paths.images + '/**/*.{jpg,jpeg,png,gif}', ['images']
 
@@ -151,7 +149,7 @@ gulp.task 'build', [
   'coffee'
   'images'
   'compass'
-  'w3cjs'
+  'html'
   'copy'
 ], ->
   gulp.src paths.dist + '/**/*'
