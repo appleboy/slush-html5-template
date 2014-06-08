@@ -11,4 +11,3 @@ validation-report.json
 validation-status.json
 dist
 npm-debug.log
-.sublime-gulp.cache
