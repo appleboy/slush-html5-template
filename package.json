@@ -1,33 +1,30 @@
 {
   "name": "slush-html5-template",
-  "version": "0.0.3",
-  "description": "html5 template engine generator (RequireJS/CoffeeScript/Compass/jQuery/Mocha) for Slush.",
-  "main": "slushfile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Slush generator for creating html5 template engine (RequireJS/CoffeeScript/Compass/jQuery/Mocha)",
+  "version": "0.1.0",
+  "homepage": "https://github.com/briandipalma/slush-node-esnext",
+  "author": {
+    "name": "Bo-Yi Wu",
+    "email": "appleboy.tw@gmail.com"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/appleboy/slush-html5-template.git"
   },
-  "keywords": [
-    "slushgenerator",
-    "html5",
-    "front-end",
-    "web",
-    "app"
-  ],
-  "author": "Bo-Yi Wu",
+  "bugs": {
+    "url": "https://github.com/appleboy/slush-html5-template/issues"
+  },
   "licenses": [
     {
       "type": "MIT",
       "url": "https://github.com/appleboy/slush-html5-template/blob/master/LICENSE"
     }
   ],
-  "bugs": {
-    "url": "https://github.com/appleboy/slush-html5-template/issues"
+  "main": "slushfile.js",
+  "engines": {
+    "node": ">= 0.10.0",
+    "npm": ">=1.4.0"
   },
-  "homepage": "https://github.com/appleboy/slush-html5-template",
   "dependencies": {
     "gulp-rename": "^1.2.0",
     "underscore.string": "^2.3.3",
@@ -37,5 +34,12 @@
     "gulp": "^3.7.0",
     "inquirer": "^0.5.1",
     "gulp-util": "^2.2.16"
-  }
+  },
+  "keywords": [
+    "slushgenerator",
+    "html5",
+    "front-end",
+    "web",
+    "app"
+  ]
 }
