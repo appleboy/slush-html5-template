@@ -52,17 +52,22 @@ gulp.task 'html', ->
     .pipe $.if production, gulp.dest paths.dist
     .pipe $.connect.reload()
 
-gulp.task 'compass', ->
+gulp.task 'styles', ->
   gulp.src paths.sass + '/**/*.scss'
+    .pipe $.plumber()
     .pipe $.if !production, $.changed paths.css,
-      extension: '.css'
+      extension: '.css'<% if (includeCompass) { %>
     .pipe $.compass
       css: paths.css
       sass: paths.sass
       image: paths.image
-    .on('error', ->)
+    .on('error', ->)<% } else { %>
+    .pipe $.rubySass
+      style: 'expanded'
+      precision: 10<% } %>
     .pipe $.if production, minifyCSS()
-    .pipe gulp.dest paths.dist + '/assets/css/'
+    .pipe gulp.dest paths.css
+    .pipe $.if production, gulp.dest paths.dist + '/assets/css/'
     .pipe $.connect.reload()
 
 gulp.task 'lint', ->
@@ -109,7 +114,7 @@ gulp.task 'watch', ['connect:app'], ->
   gulp.watch paths.coffee + '/**/*.coffee', ['coffee']
   gulp.watch paths.test + '/**/*.coffee', ['test_coffee']
   gulp.watch paths.src + '/*.html', ['html']
-  gulp.watch paths.sass + '/**/*.scss', ['compass']
+  gulp.watch paths.sass + '/**/*.scss', ['styles']
   gulp.watch paths.images + '/**/*.{jpg,jpeg,png,gif}', ['images']
 
 gulp.task 'copy', ->
@@ -140,7 +145,7 @@ gulp.task 'rename', ['rjs'], ->
 # The default task (called when you run `gulp`)
 gulp.task 'default', (cb) ->
   runs(
-    ['coffee', 'compass']
+    ['coffee', 'styles']
     'watch'
     cb)
 
@@ -148,7 +153,7 @@ gulp.task 'default', (cb) ->
 gulp.task 'build', [
   'coffee'
   'images'
-  'compass'
+  'styles'
   'html'
   'copy'
 ], ->
