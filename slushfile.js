@@ -27,16 +27,37 @@ gulp.task('default', function (done) {
     ],
     default: 'sass'
   }, {
+    type: 'checkbox',
+    name: 'features',
+    message: 'Which other options would you like to include?',
+    choices: [{
+      name: 'Normalize-scss',
+      value: 'includeNormalizeSCSS',
+      checked: true
+    }, {
+      name: 'Modernizr',
+      value: 'includeModernizr',
+      checked: true
+    }]
+  }, {
     type: 'confirm',
     name: 'moveon',
     message: 'Continue?'}
   ],
   function (answers) {
+    var hasFeature;
+
+    hasFeature = function (feat) {
+      return answers.features.indexOf(feat) !== -1;
+    };
+
     if (!answers.moveon) {
       return done();
     }
     answers.includeSass = (answers.cssFramework === 'includeSass') ? true : false;
     answers.includeCompass = (answers.cssFramework === 'includeCompass') ? true : false;
+    answers.includeNormalizeSCSS = hasFeature('includeNormalizeSCSS');
+    answers.includeModernizr = hasFeature('includeModernizr');
     gulp.src(__dirname + '/templates/**')
       .pipe(template(answers))
       .pipe(rename(function (file) {

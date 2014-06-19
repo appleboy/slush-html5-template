@@ -1,8 +1,8 @@
 # Filename: main.js
 require.config
   paths:
-    jquery: '../vendor/jquery/dist/jquery'
-    modernizr: '../vendor/modernizr/modernizr'
+    jquery: '../vendor/jquery/dist/jquery'<% if (includeModernizr) { %>
+    modernizr: '../vendor/modernizr/modernizr'<% } %>
   # for development
   urlArgs: (new Date()).getTime()
 
