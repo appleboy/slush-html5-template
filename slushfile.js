@@ -27,6 +27,19 @@ gulp.task('default', function (done) {
     ],
     default: 'sass'
   }, {
+    type: 'checkbox',
+    name: 'features',
+    message: 'Which other options would you like to include?',
+    choices: [{
+      name: 'Normalize-scss',
+      value: 'includeNormalizeSCSS',
+      checked: true
+    }, {
+      name: 'Modernizr',
+      value: 'includeModernizr',
+      checked: true
+    }]
+  }, {
     type: 'confirm',
     name: 'moveon',
     message: 'Continue?'}
