@@ -33,6 +33,7 @@ describe('slush-html5-template', function() {
   describe('default generator', function () {
     beforeEach(function () {
       mockPrompt({
+        cssFramework: 'includeSass',
         features: [],
         moveon: true
       });
