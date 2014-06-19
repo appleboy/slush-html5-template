@@ -34,7 +34,7 @@ describe('slush-html5-template', function() {
     beforeEach(function () {
       mockPrompt({
         cssFramework: 'includeSass',
-        features: [],
+        features: ['includeNormalizeSCSS', 'includeModernizr'],
         moveon: true
       });
     });
