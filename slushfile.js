@@ -48,7 +48,7 @@ gulp.task('default', function (done) {
     var hasFeature;
 
     hasFeature = function (feat) {
-      return features.indexOf(feat) !== -1;
+      return answers.features.indexOf(feat) !== -1;
     };
 
     if (!answers.moveon) {
