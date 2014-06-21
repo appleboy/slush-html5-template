@@ -77,11 +77,7 @@ describe('slush-html5-template', function() {
           'app/assets/coffee/libs',
           'app/assets/coffee/main.coffee',
           'app/assets/coffee/libs/console.coffee',
-          'app/assets/sass',
-          'app/assets/sass/ie.scss',
-          'app/assets/sass/partials',
-          'app/assets/sass/print.scss',
-          'app/assets/sass/screen.scss',
+          'app/assets/sass/main.scss',
           'app/assets/sass/partials/_base.scss'
         ]);
         done();
@@ -101,10 +97,7 @@ describe('slush-html5-template', function() {
     it('should create expected files', function (done) {
       gulp.start('default').once('stop', function () {
         mockGulpDest.assertDestNotContains([
-          'app/assets/sass/ie.scss',
-          'app/assets/sass/partials',
-          'app/assets/sass/print.scss',
-          'app/assets/sass/screen.scss',
+          'app/assets/sass/main.scss',
           'app/assets/sass/partials/_base.scss'
         ]);
         done();
