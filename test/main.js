@@ -94,7 +94,7 @@ describe('slush-html5-template', function() {
       });
     });
 
-    it('should create expected files', function (done) {
+    it('should ignore scss files', function (done) {
       gulp.start('default').once('stop', function () {
         mockGulpDest.assertDestNotContains([
           'app/assets/sass/main.scss',
