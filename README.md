@@ -1,4 +1,4 @@
-# [slush](https://github.com/slushjs/slush)-html5-template [![Build Status](https://travis-ci.org/appleboy/slush-html5-template.svg?branch=master)](https://travis-ci.org/appleboy/slush-html5-template)
+# [slush](https://github.com/slushjs/slush)-html5-template [![NPM version](https://badge.fury.io/js/slush-html5-template.svg)](http://badge.fury.io/js/slush-html5-template) [![Build Status](https://travis-ci.org/appleboy/slush-html5-template.svg?branch=master)](https://travis-ci.org/appleboy/slush-html5-template)
 
 > Slush generator Html5 web apps
 
