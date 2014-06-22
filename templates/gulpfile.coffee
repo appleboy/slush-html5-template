@@ -113,8 +113,9 @@ gulp.task 'watch', ['connect:app'], ->
   # run tasks automatically when files change
   gulp.watch paths.coffee + '/**/*.coffee', ['coffee']
   gulp.watch paths.test + '/**/*.coffee', ['test_coffee']
-  gulp.watch paths.src + '/*.html', ['html']
-  gulp.watch paths.sass + '/**/*.scss', ['styles']
+  gulp.watch paths.src + '/*.html', ['html']<% if (includeCss) { %>
+  gulp.watch paths.sass + '/**/*.scss', ['styles']<% } else { %>
+  gulp.watch paths.css + '/**/*.css', ['styles']<% } %>
   gulp.watch paths.images + '/**/*.{jpg,jpeg,png,gif}', ['images']
 
 gulp.task 'copy', ->
