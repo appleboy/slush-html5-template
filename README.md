@@ -2,6 +2,8 @@
 
 [![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status](https://travis-ci.org/appleboy/slush-html5-template.svg?branch=master)](https://travis-ci.org/appleboy/slush-html5-template)
 
+[![NPM](https://nodei.co/npm/slush-html5-template.png?downloads=true&stars=true)](https://nodei.co/npm/slush-html5-template/)
+
 > Slush generator Html5 web apps
 
 ## Features
