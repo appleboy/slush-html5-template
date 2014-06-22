@@ -44,6 +44,8 @@ $ cd my-slush-html5-template && slush html5-template
 
 ## Quick start
 
+### run application
+
 To run the application
 
 ```bash
@@ -52,7 +54,15 @@ $ npm start
 
 And then navigate to http://localhost:1337
 
-## Testing
+### Release application
+
+To build application
+
+```bash
+$ npm release
+```
+
+### Testing application
 
 To test the application
 
