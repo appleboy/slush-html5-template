@@ -24,11 +24,11 @@ gulp.task('default', function (done) {
         name: "Sass: Syntactically Awesome Style Sheets.",
         value: "includeSass"
       }, {
-        name: "Compass is an open-source CSS Authoring Framework.",
+        name: "Compass: CSS Authoring Framework.",
         value: "includeCompass"
       }
     ],
-    default: 'sass'
+    default: 0
   }, {
     type: 'checkbox',
     name: 'features',
