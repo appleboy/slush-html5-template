@@ -79,3 +79,5 @@ $ npm test
 </p>
 
 [npm-url]: https://www.npmjs.org/package/slush-html5-template
+[npm-image]: http://img.shields.io/npm/v/slush-html5-template.svg
+[downloads-image]: http://img.shields.io/npm/dm/slush-html5-template.svg
