@@ -1,4 +1,6 @@
-# [slush](https://github.com/slushjs/slush)-html5-template [![NPM version](https://badge.fury.io/js/slush-html5-template.svg)](http://badge.fury.io/js/slush-html5-template) [![Build Status](https://travis-ci.org/appleboy/slush-html5-template.svg?branch=master)](https://travis-ci.org/appleboy/slush-html5-template)
+# [slush](https://github.com/slushjs/slush)-html5-template
+
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status](https://travis-ci.org/appleboy/slush-html5-template.svg?branch=master)](https://travis-ci.org/appleboy/slush-html5-template)
 
 > Slush generator Html5 web apps
 
@@ -75,3 +77,5 @@ $ npm test
 <p align="center">
   <img src="https://raw.githubusercontent.com/appleboy/slush-html5-template/master/images/screenshot.png" />
 </p>
+
+[npm-url]: https://www.npmjs.org/package/slush-html5-template
