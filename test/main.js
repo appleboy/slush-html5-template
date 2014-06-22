@@ -30,11 +30,11 @@ describe('slush-html5-template', function() {
     process.argv.push('--skip-install');
   });
 
-  describe('default generator', function () {
+  describe('default sass generator', function () {
     beforeEach(function () {
       mockPrompt({
         cssFramework: 'includeSass',
-        features: ['includeNormalizeSCSS', 'includeModernizr'],
+        features: ['includeNormalizeCSS', 'includeModernizr'],
         moveon: true
       });
     });
@@ -71,17 +71,34 @@ describe('slush-html5-template', function() {
           'app/robots.txt',
           'test/test.coffee',
           'test/test.js',
-          'app/assets/coffee',
-          'app/assets/images',
-          'app/assets/sass',
           'app/assets/coffee/app.coffee',
           'app/assets/coffee/libs',
           'app/assets/coffee/main.coffee',
-          'app/assets/sass/ie.scss',
-          'app/assets/sass/partials',
-          'app/assets/sass/print.scss',
-          'app/assets/sass/screen.scss',
           'app/assets/coffee/libs/console.coffee',
+          'app/assets/sass/main.scss',
+          'app/assets/sass/partials/_base.scss'
+        ]);
+        mockGulpDest.assertDestNotContains([
+          'app/assets/css/main.css'
+        ]);
+        done();
+      });
+    });
+  });
+
+  describe('default css generator', function () {
+    beforeEach(function () {
+      mockPrompt({
+        cssFramework: 'includeCss',
+        features: ['includeNormalizeCSS', 'includeModernizr'],
+        moveon: true
+      });
+    });
+
+    it('should ignore scss files', function (done) {
+      gulp.start('default').once('stop', function () {
+        mockGulpDest.assertDestNotContains([
+          'app/assets/sass/main.scss',
           'app/assets/sass/partials/_base.scss'
         ]);
         done();
