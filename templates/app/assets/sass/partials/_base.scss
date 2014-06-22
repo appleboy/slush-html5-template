@@ -1,4 +1,4 @@
 /*
  * import normalize css
- */<% if (includeNormalizeSCSS) { %>
+ */<% if (includeNormalizeCSS) { %>
 @import "../../vendor/normalize-scss/_normalize.scss";<% } %>

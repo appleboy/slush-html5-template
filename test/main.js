@@ -34,7 +34,7 @@ describe('slush-html5-template', function() {
     beforeEach(function () {
       mockPrompt({
         cssFramework: 'includeSass',
-        features: ['includeNormalizeSCSS', 'includeModernizr'],
+        features: ['includeNormalizeCSS', 'includeModernizr'],
         moveon: true
       });
     });
@@ -71,14 +71,15 @@ describe('slush-html5-template', function() {
           'app/robots.txt',
           'test/test.coffee',
           'test/test.js',
-          'app/assets/coffee',
-          'app/assets/images',
           'app/assets/coffee/app.coffee',
           'app/assets/coffee/libs',
           'app/assets/coffee/main.coffee',
           'app/assets/coffee/libs/console.coffee',
           'app/assets/sass/main.scss',
           'app/assets/sass/partials/_base.scss'
+        ]);
+        mockGulpDest.assertDestNotContains([
+          'app/assets/css/main.css'
         ]);
         done();
       });
@@ -89,7 +90,7 @@ describe('slush-html5-template', function() {
     beforeEach(function () {
       mockPrompt({
         cssFramework: 'includeCss',
-        features: ['includeNormalizeSCSS', 'includeModernizr'],
+        features: ['includeNormalizeCSS', 'includeModernizr'],
         moveon: true
       });
     });

@@ -35,7 +35,7 @@ gulp.task('default', function (done) {
     message: 'Which other options would you like to include?',
     choices: [{
       name: 'Normalize-scss',
-      value: 'includeNormalizeSCSS',
+      value: 'includeNormalizeCSS',
       checked: true
     }, {
       name: 'Modernizr',
@@ -60,13 +60,13 @@ gulp.task('default', function (done) {
     answers.includeCss = (answers.cssFramework === 'includeCss') ? true : false;
     answers.includeSass = (answers.cssFramework === 'includeSass') ? true : false;
     answers.includeCompass = (answers.cssFramework === 'includeCompass') ? true : false;
-    answers.includeNormalizeSCSS = hasFeature('includeNormalizeSCSS');
+    answers.includeNormalizeCSS = hasFeature('includeNormalizeCSS');
     answers.includeModernizr = hasFeature('includeModernizr');
 
     if (answers.includeCss) {
       src = [__dirname + '/templates/**', '!' + __dirname + '/templates/app/assets/sass/**/*']
     } else {
-      src = __dirname + '/templates/**'
+      src = [__dirname + '/templates/**', '!' + __dirname + '/templates/app/assets/css/**/*']
     }
 
     gulp.src(src)
