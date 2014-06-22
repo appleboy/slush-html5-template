@@ -7,7 +7,7 @@ fs = require('fs');
 describe('html5 template generator test', function() {
   it('creates expected files', function() {
     var expected, item, _i, _len, _results;
-    expected = ['dist/favicon.ico', 'dist/.htaccess', 'dist/index.html', 'dist/404.html', 'dist/robots.txt', 'dist/assets/js/require.js', 'dist/assets/css/print.css', 'dist/assets/css/screen.css', 'dist/assets/css/ie.css', 'dist/assets/images/chrome.png'];
+    expected = ['dist/favicon.ico', 'dist/.htaccess', 'dist/index.html', 'dist/404.html', 'dist/robots.txt', 'dist/assets/js/require.js', 'dist/assets/css/main.css'];
     _results = [];
     for (_i = 0, _len = expected.length; _i < _len; _i++) {
       item = expected[_i];
