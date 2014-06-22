@@ -1,7 +1,7 @@
 {
   "name": "slush-html5-template",
   "description": "Slush generator for creating html5 template engine (RequireJS/CoffeeScript/Compass/jQuery/Mocha)",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "homepage": "https://github.com/appleboy/slush-html5-template",
   "author": {
     "name": "Bo-Yi Wu",
