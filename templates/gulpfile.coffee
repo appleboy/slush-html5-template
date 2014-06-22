@@ -53,7 +53,7 @@ gulp.task 'html', ->
     .pipe $.connect.reload()
 
 gulp.task 'styles', ->
-  gulp.src paths.sass + '/**/*.scss'
+  gulp.src <% if (includeCss) { %>paths.css + '/**/*.css'<% } else { %>paths.sass + '/**/*.scss'<% } %><% if (!includeCss) { %>
     .pipe $.plumber()
     .pipe $.if !production, $.changed paths.css,
       extension: '.css'<% if (includeCompass) { %>
@@ -64,9 +64,9 @@ gulp.task 'styles', ->
     .on('error', ->)<% } else { %>
     .pipe $.rubySass
       style: 'expanded'
-      precision: 10<% } %>
-    .pipe $.if production, minifyCSS()
-    .pipe gulp.dest paths.css
+      precision: 10<% } %><% } %>
+    .pipe $.if production, minifyCSS()<% if (!includeCss) { %>
+    .pipe gulp.dest paths.css<% } %>
     .pipe $.if production, gulp.dest paths.dist + '/assets/css/'
     .pipe $.connect.reload()
 
