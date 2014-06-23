@@ -1,6 +1,6 @@
 # [slush](https://github.com/slushjs/slush)-html5-template
 
-[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status](https://travis-ci.org/appleboy/slush-html5-template.svg?branch=master)](https://travis-ci.org/appleboy/slush-html5-template)
+[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-url] [![Build Status](https://travis-ci.org/appleboy/slush-html5-template.svg?branch=master)](https://travis-ci.org/appleboy/slush-html5-template) [![Dependency Status](https://gemnasium.com/appleboy/slush-html5-template.svg)](https://gemnasium.com/appleboy/slush-html5-template)
 
 [![NPM](https://nodei.co/npm/slush-html5-template.png?downloads=true&stars=true)](https://nodei.co/npm/slush-html5-template/)
 
