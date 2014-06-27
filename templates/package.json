@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "devDependencies": {
     "coffee-script": "~1.7.1",
-    "gulp": "^3.7.0",
+    "del": "^0.1.0",
+    "gulp": "^3.8.5",
     "gulp-cache": "~0.1.3",
     "gulp-changed": "~0.3.0",
-    "gulp-clean": "~0.2.4",
     "gulp-coffee": "~1.4.1",
     "gulp-coffeelint": "^0.3.2",<% if (includeCompass) { %>
     "gulp-compass": "^1.1.9",<% } %><% if (includeSass) { %>
