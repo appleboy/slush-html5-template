@@ -15,6 +15,7 @@
 * Support JavaScript test framework [Mocha](http://visionmedia.github.io/mocha/).
 * Support streaming build system [Gulp](http://gulpjs.com/).
 * Support Minify PNG and JPEG images with [image-min](https://github.com/sindresorhus/gulp-imagemin).
+* Support [browser-sync](http://browsersync.io) Keep multiple browsers & devices in sync when building websites.
 
 ## Getting Started
 
@@ -55,8 +56,6 @@ To run the application
 ```bash
 $ npm start
 ```
-
-And then navigate to http://localhost:1337
 
 ### Release application
 
