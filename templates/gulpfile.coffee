@@ -8,6 +8,8 @@ minifyCSS = require 'gulp-minify-css'
 production = true if $.util.env.env is 'production'
 filename = require('uuid').v4()
 lazypipe = require 'lazypipe'
+browserSync = require 'browser-sync'
+reload = browserSync.reload
 
 paths =
   src: 'app'
@@ -31,7 +33,6 @@ gulp.task 'coffee', ->
       extension: '.js'
     .pipe coffeelintTasks()
     .pipe gulp.dest paths.script
-    .pipe $.connect.reload()
 
 gulp.task 'test_coffee', ->
   gulp.src paths.test + '/**/*.coffee'
@@ -50,7 +51,6 @@ gulp.task 'html', ->
     .pipe $.if production, $.replace 'js/main', 'js/' + filename
     .pipe $.if production, $.replace 'vendor/requirejs/require.js', 'js/require.js'
     .pipe $.if production, gulp.dest paths.dist
-    .pipe $.connect.reload()
 
 gulp.task 'styles', ->
   gulp.src <% if (includeCss) { %>paths.css + '/**/*.css'<% } else { %>paths.sass + '/**/*.scss'<% } %><% if (!includeCss) { %>
@@ -68,7 +68,6 @@ gulp.task 'styles', ->
     .pipe $.if production, minifyCSS()<% if (!includeCss) { %>
     .pipe gulp.dest paths.css<% } %>
     .pipe $.if production, gulp.dest paths.dist + '/assets/css/'
-    .pipe $.connect.reload()
 
 gulp.task 'lint', ->
   gulp.src 'gulpfile.js'
@@ -91,7 +90,6 @@ gulp.task 'images', ->
       progressive: true
       interlaced: true
     .pipe $.if production, gulp.dest paths.dist + '/assets/images'
-    .pipe $.connect.reload()
 
 # testing via mocha tool
 gulp.task 'test', ->
@@ -99,21 +97,22 @@ gulp.task 'test', ->
     .pipe $.mocha
       reporter: 'spec'
 
-# connect
+# Connect
 gulp.task 'connect:app', ->
-  $.connect.server
-    root: [paths.src]
-    port: 1337
-    livereload: true
+  browserSync
+    notify: false
+    server:
+      baseDir: [paths.src]
 
-gulp.task 'watch', ['connect:app'], ->
   # run tasks automatically when files change
   gulp.watch paths.coffee + '/**/*.coffee', ['coffee']
   gulp.watch paths.test + '/**/*.coffee', ['test_coffee']
-  gulp.watch paths.src + '/*.html', ['html']<% if (!includeCss) { %>
+  gulp.watch paths.src + '/*.html', ['html', reload]<% if (!includeCss) { %>
   gulp.watch paths.sass + '/**/*.scss', ['styles']<% } else { %>
   gulp.watch paths.css + '/**/*.css', ['styles']<% } %>
-  gulp.watch paths.images + '/**/*.{jpg,jpeg,png,gif}', ['images']
+  gulp.watch paths.images + '/**/*.{jpg,jpeg,png,gif}', ['images', reload]
+  gulp.watch paths.script + '/**/*.js', reload
+  gulp.watch paths.css + '/**/*.css', reload
 
 gulp.task 'copy', ->
   gulp.src [
@@ -144,7 +143,7 @@ gulp.task 'rename', ['rjs'], ->
 gulp.task 'default', (cb) ->
   runs(
     ['coffee', 'styles']
-    'watch'
+    'connect:app'
     cb)
 
 # Build
