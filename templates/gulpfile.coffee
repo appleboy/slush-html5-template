@@ -43,7 +43,7 @@ gulp.task 'test_coffee', ->
 
 gulp.task 'html', ->
   gulp.src paths.src + '/*.html'
-    .pipe $.if !production, $.changed paths.dist<% if (!includeRequireJS) { %>
+    .pipe $.changed paths.dist<% if (!includeRequireJS) { %>
     .pipe $.replace 'main-built', filename
     .pipe $.useref.assets()
     .pipe $.if '*.js', $.uglify()
@@ -52,12 +52,12 @@ gulp.task 'html', ->
     .pipe $.if '*.html', $.htmlmin
       removeComments: true
       collapseWhitespace: true<% } else { %>
-    .pipe $.if production, $.replace 'js/main', 'js/' + filename
-    .pipe $.if production, $.replace 'vendor/requirejs/require.js', 'js/require.js'
-    .pipe $.if production, $.htmlmin
+    .pipe $.replace 'js/main', 'js/' + filename
+    .pipe $.replace 'vendor/requirejs/require.js', 'js/require.js'
+    .pipe $.htmlmin
       removeComments: true
       collapseWhitespace: true<% } %>
-    .pipe $.if production, gulp.dest paths.dist
+    .pipe gulp.dest paths.dist
 
 gulp.task 'styles', ->
   gulp.src <% if (includeCss) { %>paths.css + '/**/*.css'<% } else { %>paths.sass + '/**/*.scss'<% } %><% if (!includeCss) { %>
@@ -114,7 +114,7 @@ gulp.task 'connect:app', ->
   # run tasks automatically when files change
   gulp.watch paths.coffee + '/**/*.coffee', ['coffee']
   gulp.watch paths.test + '/**/*.coffee', ['test_coffee']
-  gulp.watch paths.src + '/*.html', ['html', reload]<% if (!includeCss) { %>
+  gulp.watch paths.src + '/*.html', reload<% if (!includeCss) { %>
   gulp.watch paths.sass + '/**/*.scss', ['styles']<% } else { %>
   gulp.watch paths.css + '/**/*.css', ['styles']<% } %>
   gulp.watch paths.images + '/**/*.{jpg,jpeg,png,gif}', ['images', reload]
