@@ -1,7 +1,7 @@
 'use strict'
 
-gulp = require 'gulp'
-rjs = require 'requirejs'
+gulp = require 'gulp'<% if (includeRequireJS) { %>
+rjs = require 'requirejs'<% } %>
 runs = require 'run-sequence'
 $ = require('gulp-load-plugins')()
 minifyCSS = require 'gulp-minify-css'
