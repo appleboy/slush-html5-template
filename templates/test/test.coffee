@@ -8,8 +8,9 @@ describe 'html5 template generator test', ->
       'dist/.htaccess',
       'dist/index.html',
       'dist/404.html',
-      'dist/robots.txt',
-      'dist/assets/js/require.js',
+      'dist/robots.txt',<% if (includeRequireJS) { %>
+      'dist/assets/js/require.js',<% } %><% if (!includeRequireJS) { %>
+      'dist/assets/js/main-built.js',<% } %>
       'dist/assets/css/main.css'
     ]
     for item in expected

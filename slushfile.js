@@ -34,6 +34,10 @@ gulp.task('default', function (done) {
     name: 'features',
     message: 'Which other options would you like to include?',
     choices: [{
+      name: 'RequireJS',
+      value: 'includeRequireJS',
+      checked: true
+    }, {
       name: 'Normalize-scss',
       value: 'includeNormalizeCSS',
       checked: true
@@ -62,6 +66,7 @@ gulp.task('default', function (done) {
     answers.includeCompass = (answers.cssFramework === 'includeCompass') ? true : false;
     answers.includeNormalizeCSS = hasFeature('includeNormalizeCSS');
     answers.includeModernizr = hasFeature('includeModernizr');
+    answers.includeRequireJS = hasFeature('includeRequireJS');
 
     if (answers.includeCss) {
       src = [__dirname + '/templates/**', '!' + __dirname + '/templates/app/assets/sass/**/*']

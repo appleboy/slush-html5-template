@@ -44,12 +44,18 @@ gulp.task 'test_coffee', ->
 gulp.task 'html', ->
   gulp.src paths.src + '/*.html'
     .pipe $.if !production, $.changed paths.dist
-    .pipe $.if production, $.htmlmin(
+    .pipe $.useref.assets()
+    .pipe $.if '*.js', $.uglify()
+    .pipe $.useref.restore()
+    .pipe $.useref()
+    .pipe $.if '*.html', $.htmlmin
       removeComments: true
-      collapseWhitespace: true
-    )
+      collapseWhitespace: true<% } %><% if (includeRequireJS) { %>
     .pipe $.if production, $.replace 'js/main', 'js/' + filename
     .pipe $.if production, $.replace 'vendor/requirejs/require.js', 'js/require.js'
+    .pipe $.if production, $.htmlmin
+      removeComments: true
+      collapseWhitespace: true<% } %>
     .pipe $.if production, gulp.dest paths.dist
 
 gulp.task 'styles', ->
@@ -120,7 +126,7 @@ gulp.task 'copy', ->
     paths.src + '/favicon.ico'
     paths.src + '/robots.txt']
     .pipe gulp.dest paths.dist
-
+<% if (includeRequireJS) { %>
 gulp.task 'rjs', ['build'], (cb) ->
   rjs.optimize
     baseUrl: paths.script
@@ -129,15 +135,15 @@ gulp.task 'rjs', ['build'], (cb) ->
     mainConfigFile: paths.script + '/main.js'
     preserveLicenseComments: false
     , (buildResponse) ->
-      cb()
-
+      cb()<% } %>
+<% if (includeRequireJS) { %>
 gulp.task 'rename', ['rjs'], ->
   gulp.src paths.script + '/main-built.js'
     .pipe $.rename 'assets/js/' + filename + '.js'
     .pipe gulp.dest 'dist'
   gulp.src paths.vendor + '/requirejs/require.js'
     .pipe $.uglify()
-    .pipe gulp.dest paths.dist + '/assets/js/'
+    .pipe gulp.dest paths.dist + '/assets/js/'<% } %>
 
 # The default task (called when you run `gulp`)
 gulp.task 'default', (cb) ->
@@ -147,6 +153,7 @@ gulp.task 'default', (cb) ->
     cb)
 
 # Build
+<% if (includeRequireJS) { %>
 gulp.task 'build', [
   'coffee'
   'images'
@@ -158,10 +165,20 @@ gulp.task 'build', [
     .pipe $.size
       showFiles: true,
       gzip: true
+<% } %><% if (!includeRequireJS) { %>
+gulp.task 'build', (cb) ->
+  runs([
+    'coffee'
+    'images'
+    'styles'
+    'copy']
+    'html'
+    cb)
+<% } %>
 
 gulp.task 'release', (cb) ->
   runs(
-    ['build', 'rjs', 'rename']
+    ['build'<% if (includeRequireJS) { %>, 'rjs', 'rename'<% } %>]
     cb)
 
 module.exports = gulp
