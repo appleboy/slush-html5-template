@@ -1,4 +1,4 @@
-# Filename: main.js
+# Filename: main.js<% if (includeRequireJS) { %>
 require.config
   paths:
     jquery: '../vendor/jquery/dist/jquery'<% if (includeModernizr) { %>
@@ -8,4 +8,4 @@ require.config
 
 # initail app
 require ['app'], (App) ->
-  App.initialize()
+  App.initialize()<% } %>

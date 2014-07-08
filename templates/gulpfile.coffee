@@ -43,14 +43,14 @@ gulp.task 'test_coffee', ->
 
 gulp.task 'html', ->
   gulp.src paths.src + '/*.html'
-    .pipe $.if !production, $.changed paths.dist
+    .pipe $.if !production, $.changed paths.dist<% if (!includeRequireJS) { %>
     .pipe $.useref.assets()
     .pipe $.if '*.js', $.uglify()
     .pipe $.useref.restore()
     .pipe $.useref()
     .pipe $.if '*.html', $.htmlmin
       removeComments: true
-      collapseWhitespace: true<% } %><% if (includeRequireJS) { %>
+      collapseWhitespace: true<% } else { %>
     .pipe $.if production, $.replace 'js/main', 'js/' + filename
     .pipe $.if production, $.replace 'vendor/requirejs/require.js', 'js/require.js'
     .pipe $.if production, $.htmlmin
@@ -135,8 +135,8 @@ gulp.task 'rjs', ['build'], (cb) ->
     mainConfigFile: paths.script + '/main.js'
     preserveLicenseComments: false
     , (buildResponse) ->
-      cb()<% } %>
-<% if (includeRequireJS) { %>
+      cb()
+
 gulp.task 'rename', ['rjs'], ->
   gulp.src paths.script + '/main-built.js'
     .pipe $.rename 'assets/js/' + filename + '.js'
@@ -165,7 +165,7 @@ gulp.task 'build', [
     .pipe $.size
       showFiles: true,
       gzip: true
-<% } %><% if (!includeRequireJS) { %>
+<% } else { %>
 gulp.task 'build', (cb) ->
   runs([
     'coffee'
