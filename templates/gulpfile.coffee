@@ -1,7 +1,7 @@
 'use strict'
 
-gulp = require 'gulp'
-rjs = require 'requirejs'
+gulp = require 'gulp'<% if (includeRequireJS) { %>
+rjs = require 'requirejs'<% } %>
 runs = require 'run-sequence'
 $ = require('gulp-load-plugins')()
 minifyCSS = require 'gulp-minify-css'
@@ -43,13 +43,20 @@ gulp.task 'test_coffee', ->
 
 gulp.task 'html', ->
   gulp.src paths.src + '/*.html'
-    .pipe $.if !production, $.changed paths.dist
-    .pipe $.if production, $.htmlmin(
+    .pipe $.if !production, $.changed paths.dist<% if (!includeRequireJS) { %>
+    .pipe $.replace 'main-built', filename
+    .pipe $.useref.assets()
+    .pipe $.if '*.js', $.uglify()
+    .pipe $.useref.restore()
+    .pipe $.useref()
+    .pipe $.if '*.html', $.htmlmin
       removeComments: true
-      collapseWhitespace: true
-    )
+      collapseWhitespace: true<% } else { %>
     .pipe $.if production, $.replace 'js/main', 'js/' + filename
     .pipe $.if production, $.replace 'vendor/requirejs/require.js', 'js/require.js'
+    .pipe $.if production, $.htmlmin
+      removeComments: true
+      collapseWhitespace: true<% } %>
     .pipe $.if production, gulp.dest paths.dist
 
 gulp.task 'styles', ->
@@ -114,13 +121,22 @@ gulp.task 'connect:app', ->
   gulp.watch paths.script + '/**/*.js', reload
   gulp.watch paths.css + '/**/*.css', reload
 
+# Connect
+gulp.task 'connect:dist', ->
+  browserSync
+    notify: false
+    server:
+      baseDir: [paths.dist]
+
+  gulp.watch paths.dist + '/**/*', reload
+
 gulp.task 'copy', ->
   gulp.src [
     paths.src + '/.htaccess'
     paths.src + '/favicon.ico'
     paths.src + '/robots.txt']
     .pipe gulp.dest paths.dist
-
+<% if (includeRequireJS) { %>
 gulp.task 'rjs', ['build'], (cb) ->
   rjs.optimize
     baseUrl: paths.script
@@ -137,7 +153,7 @@ gulp.task 'rename', ['rjs'], ->
     .pipe gulp.dest 'dist'
   gulp.src paths.vendor + '/requirejs/require.js'
     .pipe $.uglify()
-    .pipe gulp.dest paths.dist + '/assets/js/'
+    .pipe gulp.dest paths.dist + '/assets/js/'<% } %>
 
 # The default task (called when you run `gulp`)
 gulp.task 'default', (cb) ->
@@ -147,6 +163,7 @@ gulp.task 'default', (cb) ->
     cb)
 
 # Build
+<% if (includeRequireJS) { %>
 gulp.task 'build', [
   'coffee'
   'images'
@@ -158,10 +175,20 @@ gulp.task 'build', [
     .pipe $.size
       showFiles: true,
       gzip: true
+<% } else { %>
+gulp.task 'build', (cb) ->
+  runs([
+    'coffee'
+    'images'
+    'styles'
+    'copy']
+    'html'
+    cb)
+<% } %>
 
 gulp.task 'release', (cb) ->
   runs(
-    ['build', 'rjs', 'rename']
+    ['build'<% if (includeRequireJS) { %>, 'rjs', 'rename'<% } %>]
     cb)
 
 module.exports = gulp
