@@ -44,6 +44,7 @@ gulp.task 'test_coffee', ->
 gulp.task 'html', ->
   gulp.src paths.src + '/*.html'
     .pipe $.if !production, $.changed paths.dist<% if (!includeRequireJS) { %>
+    .pipe $.replace 'main-built', filename
     .pipe $.useref.assets()
     .pipe $.if '*.js', $.uglify()
     .pipe $.useref.restore()
