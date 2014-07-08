@@ -70,7 +70,6 @@ describe('slush-html5-template', function() {
           'app/index.html',
           'app/robots.txt',
           'test/test.coffee',
-          'test/test.js',
           'app/assets/coffee/app.coffee',
           'app/assets/coffee/libs',
           'app/assets/coffee/main.coffee',
