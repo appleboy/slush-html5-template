@@ -3,5 +3,6 @@ app/assets/vendor
 node_modules/<% if (!includeCss) { %>
 app/assets/css<% } %>
 app/assets/js
+test/*.js
 dist
 npm-debug.log
