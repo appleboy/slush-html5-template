@@ -9,8 +9,7 @@ describe 'html5 template generator test', ->
       'dist/index.html',
       'dist/404.html',
       'dist/robots.txt',<% if (includeRequireJS) { %>
-      'dist/assets/js/require.js',<% } %><% if (!includeRequireJS) { %>
-      'dist/assets/js/main-built.js',<% } %>
+      'dist/assets/js/require.js',<% } %>
       'dist/assets/css/main.css'
     ]
     for item in expected
