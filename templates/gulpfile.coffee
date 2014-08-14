@@ -191,4 +191,9 @@ gulp.task 'release', (cb) ->
     ['build'<% if (includeRequireJS) { %>, 'rjs', 'rename'<% } %>]
     cb)
 
+# Load custom tasks from the `tasks` directory
+try
+  require('require-dir')('tasks')
+catch error
+
 module.exports = gulp
