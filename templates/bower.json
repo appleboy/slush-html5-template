@@ -1,11 +1,11 @@
 {
   "name": "<%= name %>",
   "version": "0.0.0",
-  "dependencies": {
-    "jquery": "~2.1.1",<% if (!includeCss && includeNormalizeCSS) { %>
+  "dependencies": {<% if (includeRequireJS) { %>
+    "requirejs": "~2.1.14",<% } %><% if (!includeCss && includeNormalizeCSS) { %>
     "normalize-scss": "~3.0.1",<% } %><% if (includeModernizr) { %>
     "modernizr": "~2.8.2",<% } %>
-    "requirejs": "~2.1.14"
+    "jquery": "~2.1.1"
   },
   "ignore": [
     "**/.*",
