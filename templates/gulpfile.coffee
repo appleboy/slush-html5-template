@@ -76,11 +76,6 @@ gulp.task 'styles', ->
     .pipe gulp.dest paths.css<% } %>
     .pipe $.if production, gulp.dest paths.dist + '/assets/css/'
 
-gulp.task 'lint', ->
-  gulp.src 'gulpfile.js'
-    .pipe $.jshint()
-    .pipe $.jshint.reporter 'default'
-
 # Clean
 gulp.task 'clean', require('del').bind null, [
     paths.dist
