@@ -431,9 +431,10 @@ body {
 #logo {
   margin: 0 auto;
   max-width: 150px;
-  img {
-    max-width: 150px;
-  }
+}
+
+#logo img {
+  max-width: 150px;
 }
 
 #header {
