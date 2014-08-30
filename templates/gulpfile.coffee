@@ -4,7 +4,6 @@ gulp = require 'gulp'<% if (includeRequireJS) { %>
 rjs = require 'requirejs'<% } %>
 runs = require 'run-sequence'
 $ = require('gulp-load-plugins')()
-minifyCSS = require 'gulp-minify-css'
 production = true if $.util.env.env is 'production'
 filename = require('uuid').v4()
 lazypipe = require 'lazypipe'
@@ -49,9 +48,7 @@ gulp.task 'html', ->
     .pipe $.if '*.js', $.uglify()
     .pipe $.useref.restore()
     .pipe $.useref()
-    .pipe $.if '*.html', $.htmlmin
-      removeComments: true
-      collapseWhitespace: true<% } else { %>
+    .pipe $.if '*.html', $.minifyHtml()<% } else { %>
     .pipe $.replace 'js/main', 'js/' + filename
     .pipe $.replace 'vendor/requirejs/require.js', 'js/require.js'
     .pipe $.htmlmin
@@ -72,7 +69,7 @@ gulp.task 'styles', ->
     .pipe $.rubySass
       style: 'expanded'
       precision: 10<% } %><% } %>
-    .pipe $.if production, minifyCSS()<% if (!includeCss) { %>
+    .pipe $.if production, $.csso()<% if (!includeCss) { %>
     .pipe gulp.dest paths.css<% } %>
     .pipe $.if production, gulp.dest paths.dist + '/assets/css/'
 
