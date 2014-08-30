@@ -51,9 +51,7 @@ gulp.task 'html', ->
     .pipe $.if '*.html', $.minifyHtml()<% } else { %>
     .pipe $.replace 'js/main', 'js/' + filename
     .pipe $.replace 'vendor/requirejs/require.js', 'js/require.js'
-    .pipe $.htmlmin
-      removeComments: true
-      collapseWhitespace: true<% } %>
+    .pipe $.minifyHtml()<% } %>
     .pipe gulp.dest paths.dist
 
 gulp.task 'styles', ->
