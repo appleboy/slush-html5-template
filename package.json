@@ -29,12 +29,12 @@
     "test": "mocha"
   },
   "dependencies": {
-    "gulp": "^3.8.5",
+    "gulp": "^3.8.7",
     "gulp-conflict": "^0.1.2",
-    "gulp-install": "^0.1.5",
+    "gulp-install": "^0.1.8",
     "gulp-rename": "^1.2.0",
-    "gulp-template": "^0.1.1",
-    "gulp-util": "^2.2.16",
+    "gulp-template": "^0.1.2",
+    "gulp-util": "^2.2.20",
     "inquirer": "^0.5.1",
     "underscore.string": "^2.3.3"
   },
@@ -46,8 +46,8 @@
     "app"
   ],
   "devDependencies": {
-    "mocha": "^1.20.1",
-    "mock-gulp-dest": "^0.1.0",
+    "mocha": "^1.21.4",
+    "mock-gulp-dest": "^0.1.1",
     "should": "^4.0.4"
   }
 }
