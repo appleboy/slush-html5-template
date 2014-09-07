@@ -62,7 +62,7 @@ $ npm start
 To build application
 
 ```bash
-$ npm release
+$ npm run release
 ```
 
 ### Testing application
