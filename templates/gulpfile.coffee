@@ -56,14 +56,16 @@ gulp.task 'html', ->
 
 gulp.task 'styles', ->
   gulp.src <% if (includeCss) { %>paths.css + '/**/*.css'<% } else { %>paths.sass + '/**/*.scss'<% } %><% if (!includeCss) { %>
-    .pipe $.plumber()
+    .pipe $.if !production, $.plumber
+      errorHandler: (error) ->
+        $.util.log $.util.colors.red error.message
+        this.emit 'end'
     .pipe $.if !production, $.changed paths.css,
       extension: '.css'<% if (includeCompass) { %>
     .pipe $.compass
       css: paths.css
       sass: paths.sass
-      image: paths.image
-    .on('error', ->)<% } else { %>
+      image: paths.image<% } else { %>
     .pipe $.rubySass
       style: 'expanded'
       precision: 10<% } %><% } %>
