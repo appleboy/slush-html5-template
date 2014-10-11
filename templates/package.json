@@ -3,37 +3,37 @@
   "description": "",
   "version": "0.0.0",
   "devDependencies": {
-    "bower": "^1.3.8",
-    "browser-sync": "^1.3.5",
-    "coffee-script": "^1.7.1",
-    "del": "^0.1.2",
-    "gulp": "^3.8.7",
-    "gulp-cache": "^0.2.1",
+    "bower": "^1.3.12",
+    "browser-sync": "^1.5.7",
+    "coffee-script": "^1.8.0",
+    "del": "^0.1.3",
+    "gulp": "^3.8.8",
+    "gulp-cache": "^0.2.4",
     "gulp-changed": "^1.0.0",
-    "gulp-coffee": "^2.1.1",
-    "gulp-coffeelint": "^0.3.2",<% if (includeCompass) { %>
-    "gulp-compass": "^1.2.0",<% } %><% if (includeSass) { %>
-    "gulp-ruby-sass": "^0.5.0",<% } %><% if (!includeCss) { %>
-    "gulp-plumber": "^0.6.3",<% } %>
+    "gulp-coffee": "^2.2.0",
+    "gulp-coffeelint": "^0.4.0",<% if (includeCompass) { %>
+    "gulp-compass": "^1.3.2",<% } %><% if (includeSass) { %>
+    "gulp-ruby-sass": "^0.5.0",<% } %>
     "gulp-csso": "^0.2.9",
-    "gulp-if": "^1.2.4",
-    "gulp-imagemin": "^1.0.0",
-    "gulp-jshint": "^1.8.4",
-    "gulp-load-plugins": "^0.5.3",
-    "gulp-minify-html": "^0.1.4",
-    "gulp-mocha": "^1.0.0",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^1.0.1",
+    "gulp-jshint": "^1.8.5",
+    "gulp-load-plugins": "^0.7.0",
+    "gulp-minify-html": "^0.1.6",
+    "gulp-mocha": "^1.1.1",
+    "gulp-plumber": "^0.6.6",
     "gulp-rename": "^1.2.0",
     "gulp-replace": "^0.4.0",
-    "gulp-size": "^1.0.0",
-    "gulp-uglify": "^0.3.1",<% if (!includeRequireJS) { %>
+    "gulp-size": "^1.1.0",
+    "gulp-uglify": "^1.0.1",<% if (!includeRequireJS) { %>
     "gulp-useref": "^0.5.0",<% } %>
     "gulp-util": "^3.0.0",
     "lazypipe": "^0.2.2",
     "mocha": "^1.21.4",
     "require-dir": "^0.1.0",<% if (includeRequireJS) { %>
-    "requirejs": "^2.1.14",<% } %>
-    "run-sequence": "^0.3.6",
-    "uuid": "~1.4.1"
+    "requirejs": "^2.1.15",<% } %>
+    "run-sequence": "^1.0.1",
+    "uuid": "^2.0.1"
   },
   "scripts": {
     "start": "gulp",
