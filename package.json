@@ -1,7 +1,7 @@
 {
   "name": "slush-html5-template",
   "description": "Slush generator for creating html5 template engine (RequireJS/CoffeeScript/Compass/jQuery/Mocha)",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "homepage": "https://github.com/appleboy/slush-html5-template",
   "author": {
     "name": "Bo-Yi Wu",
@@ -29,13 +29,13 @@
     "test": "mocha"
   },
   "dependencies": {
-    "gulp": "^3.8.7",
-    "gulp-conflict": "^0.1.2",
-    "gulp-install": "^0.1.8",
+    "gulp": "^3.8.8",
+    "gulp-conflict": "^0.2.0",
+    "gulp-install": "^0.2.0",
     "gulp-rename": "^1.2.0",
-    "gulp-template": "^0.1.2",
-    "gulp-util": "^2.2.20",
-    "inquirer": "^0.5.1",
+    "gulp-template": "^1.1.1",
+    "gulp-util": "^3.0.1",
+    "inquirer": "^0.8.0",
     "underscore.string": "^2.3.3"
   },
   "keywords": [
