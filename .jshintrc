@@ -16,13 +16,12 @@
   "unused": true,
   "strict": true,
   "globals": {
-    /* MOCHA */
-    "describe"   : false,
-    "it"     : false,
-    "before"   : false,
-    "beforeEach" : false,
-    "after"    : false,
-    "afterEach"  : false,
-    "require"  : false
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "require": false
   }
 }
