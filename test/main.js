@@ -64,7 +64,6 @@ describe('slush-html5-template', function() {
           'package.json',
           'test',
           'app/404.html',
-          'app/.htaccess',
           'app/assets',
           'app/favicon.ico',
           'app/index.html',
