@@ -46,8 +46,15 @@
     "app"
   ],
   "devDependencies": {
-    "mocha": "^1.21.4",
+    "gulp": "^3.8.10",
+    "gulp-conflict": "^0.2.0",
+    "gulp-install": "^0.2.0",
+    "gulp-template": "^1.1.1",
+    "gulp-util": "^3.0.1",
+    "inquirer": "^0.8.0",
+    "mocha": "^2.0.1",
     "mock-gulp-dest": "^0.1.1",
-    "should": "^4.0.4"
+    "should": "^4.4.1",
+    "underscore.string": "^2.4.0"
   }
 }
