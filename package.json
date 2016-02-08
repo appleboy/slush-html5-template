@@ -29,7 +29,7 @@
     "test": "mocha"
   },
   "dependencies": {
-    "gulp": "^3.8.8",
+    "gulp": "^3.9.1",
     "gulp-conflict": "^0.4.0",
     "gulp-install": "^0.2.0",
     "gulp-rename": "^1.2.0",
