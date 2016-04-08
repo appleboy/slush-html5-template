@@ -33,7 +33,7 @@
     "gulp-conflict": "^0.4.0",
     "gulp-install": "^0.2.0",
     "gulp-rename": "^1.2.0",
-    "gulp-template": "^1.1.1",
+    "gulp-template": "^4.0.0",
     "gulp-util": "^3.0.1",
     "inquirer": "^0.12.0",
     "underscore.string": "^3.3.4"
