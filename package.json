@@ -54,7 +54,7 @@
     "inquirer": "^0.8.0",
     "mocha": "^3.0.1",
     "mock-gulp-dest": "^0.1.1",
-    "should": "^10.0.0",
+    "should": "^11.0.0",
     "underscore.string": "^2.4.0"
   }
 }
